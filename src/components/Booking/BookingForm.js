@@ -1,14 +1,33 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useNavigate } from 'react-router-dom';
 
 const BookingForm = ({ place }) => {
+    const [location, setLocation] = useState('');
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
+    const navigate = useNavigate();
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+
+        const booking = {
+            location,
+            destination: place,
+            startDate,
+            endDate,
+        };
+
+        localStorage.setItem('booking', JSON.stringify(booking));
+
+        navigate('/destination');
+    };
+
     return (
         <div className="w-96 ml-auto py-10 px-8 rounded-lg backdrop-blur-sm bg-blue-100/40">
-            <form>
+            <form onSubmit={handleOnSubmit}>
                 <div className="mb-5">
                     <label
                         htmlFor="location"
@@ -20,6 +39,8 @@ const BookingForm = ({ place }) => {
                         type="text"
                         placeholder="Your location"
                         id="location"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
                         className="w-full py-2 px-3 rounded bg-white text-black outline-none border border-transparent transition-all duration-500 focus:border-[#2977c4] focus:border"
                     />
                 </div>
