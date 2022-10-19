@@ -20,7 +20,7 @@ const BookingForm = ({ place }) => {
                         type="text"
                         placeholder="Your location"
                         id="location"
-                        className="w-full py-2 px-3 rounded bg-white text-black outline-none transition-all duration-500"
+                        className="w-full py-2 px-3 rounded bg-white text-black outline-none border border-transparent transition-all duration-500 focus:border-[#2977c4] focus:border"
                     />
                 </div>
                 <div className="mb-5">
@@ -36,7 +36,7 @@ const BookingForm = ({ place }) => {
                         value={place}
                         disabled
                         id="destination"
-                        className="w-full py-2 px-3 rounded bg-white text-black outline-none transition-all duration-500"
+                        className="w-full py-2 px-3 rounded bg-white text-black outline-none border border-transparent transition-all duration-500 focus:border-[#2977c4] focus:border"
                     />
                 </div>
 
@@ -51,24 +51,26 @@ const BookingForm = ({ place }) => {
                         <DatePicker
                             selected={startDate}
                             onChange={(date) => setStartDate(date)}
+                            minDate={new Date()}
                             dateFormat="MMM d, yyyy"
-                            className="w-full py-2 px-3 rounded bg-white text-black outline-none transition-all duration-500"
+                            className="w-full py-2 px-3 rounded bg-white text-black outline-none border border-transparent transition-all duration-500 focus:border-[#2977c4] focus:border"
                             id="from"
                         />
                     </div>
                     <div>
                         <label
-                            htmlFor="from"
+                            htmlFor="to"
                             className="block mb-2 text-white font-medium"
                         >
-                            From
+                            To
                         </label>
                         <DatePicker
                             selected={endDate}
                             onChange={(date) => setEndDate(date)}
+                            minDate={startDate}
                             dateFormat="MMM d, yyyy"
-                            className="w-full py-2 px-3 rounded bg-white text-black outline-none transition-all duration-500"
-                            id="from"
+                            className="w-full py-2 px-3 rounded bg-white text-black outline-none border border-transparent transition-all duration-500 focus:border-[#2977c4] focus:border"
+                            id="to"
                         />
                     </div>
                 </div>
