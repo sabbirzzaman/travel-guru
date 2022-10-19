@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Details = () => {
     const { activeSlider } = useSelector((state) => state.carousel);
@@ -16,9 +17,11 @@ const Details = () => {
                 <p className="text-white">{details.substring(0, 200)} ...</p>
             </div>
 
-            <button className="bg-[#2977c4] text-white py-2 px-7 rounded-md font-medium text-base transition-all duration-300 hover:bg-[#3498db]">
-                Book Now
-            </button>
+            <Link to={`/booking/${activeSlider}`}>
+                <button className="bg-[#2977c4] text-white py-2 px-7 rounded-md font-medium text-base transition-all duration-300 hover:bg-[#3498db]">
+                    Book Now
+                </button>
+            </Link>
         </div>
     );
 };

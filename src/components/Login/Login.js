@@ -28,7 +28,7 @@ const Login = () => {
                                 </div>
                                 <div className="mb-4">
                                     <input
-                                        type="text"
+                                        type="password"
                                         placeholder="Enter your password"
                                         className="relative w-full p-1 bg-transparent outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
                                     />
