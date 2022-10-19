@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Header from '../common/Header';
 import Carousel from './Carousel';
 import Details from './Details';
+import ProgressBar from './ProgressBar';
 
 const Home = () => {
     const { activeSlider } = useSelector((state) => state.carousel);
@@ -13,8 +14,9 @@ const Home = () => {
     return (
         <div
             style={{ backgroundImage: `url(${img})` }}
-            className={`h-screen w-full transition-all duration-300 bg-cover bg-center`}
+            className={`h-screen relative flex flex-col justify-center w-full transition-all duration-300 bg-cover bg-center`}
         >
+            <ProgressBar activeSlider={activeSlider} />
             <div className="relative bg-slate-900/40 h-screen overflow-hidden">
                 <div className="max-w-6xl mx-auto">
                     <Header />
