@@ -5,3 +5,8 @@
 body {
     font-family: 'Montserrat', sans-serif;
 }
+
+.react-datepicker__header {
+    background-color: #fff;
+    border: none;
+}
