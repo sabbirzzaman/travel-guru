@@ -1,16 +1,32 @@
 import React from 'react';
-import image from '../../images/img-1.jpg';
+import { useSelector } from 'react-redux';
 import Header from '../common/Header';
+import Carousel from './Carousel';
+import Details from './Details';
 
 const Home = () => {
+    const { activeSlider } = useSelector((state) => state.carousel);
+    const { img } = useSelector((state) =>
+        state.carousel.slider.find((slide) => slide.id === activeSlider)
+    );
+
     return (
         <div
-            style={{ backgroundImage: `url(${image})` }}
-            className={`h-screen w-full bg-cover bg-center`}
+            style={{ backgroundImage: `url(${img})` }}
+            className={`h-screen w-full transition-all duration-300 bg-cover bg-center`}
         >
-            <div className="bg-black/50 h-screen">
+            <div className="relative bg-slate-900/40 h-screen overflow-hidden">
                 <div className="max-w-6xl mx-auto">
                     <Header />
+
+                    <div className="grid grid-cols-2 py-14">
+                        <div className="">
+                            <Details />
+                        </div>
+                        <div className="">
+                            <Carousel />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
