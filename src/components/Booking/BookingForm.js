@@ -31,7 +31,7 @@ const BookingForm = ({ place }) => {
     };
 
     return (
-        <div className="w-96 ml-auto py-10 px-8 rounded-lg backdrop-blur-sm bg-blue-100/40">
+        <div className="md:w-96 w-80 md:ml-auto mx-auto md:mx-0 md:py-10 md:px-8 px-5 py-6 rounded-lg backdrop-blur-sm bg-blue-100/40">
             <form onSubmit={handleOnSubmit}>
                 <div className="mb-5">
                     <label

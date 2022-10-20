@@ -2,12 +2,12 @@ import React from 'react';
 
 const BookingDetails = ({place, details}) => {
     return (
-        <div className="mr-14 flex flex-col items-start justify-evenly h-[60vh] py-14">
+        <div className="xl:mr-14 md:mr-10 md:flex flex-col block sm:max-w-sm max-w-sm md:mx-0 mx-auto items-start justify-evenly md:h-[60vh] h-auto md:py-14 py-8 md:text-left text-center">
             <div>
-                <h2 className="text-white text-4xl font-extrabold mb-4">
+                <h2 className="text-white md:text-4xl sm:text-3xl text-3xl font-extrabold md:mb-4 mb-2">
                     {place}
                 </h2>
-                <p className="text-white">{details}</p>
+                <p className="text-white sm:text-sm text-sm">{details}</p>
             </div>
         </div>
     );

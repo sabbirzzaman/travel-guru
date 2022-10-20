@@ -11,7 +11,7 @@ const Hotels = ({ booking }) => {
 
     return (
         <>
-            <div className="bg-white px-5 py-4 rounded-lg shadow-lg mb-8">
+            <div className="bg-white px-5 py-4 rounded-lg shadow-lg md:mb-8 mb-5">
                 <h3 className="text-2xl font-bold mb-2">
                     Stay in {destination}
                 </h3>
@@ -21,8 +21,8 @@ const Hotels = ({ booking }) => {
                 </p>
             </div>
 
-            <div className='h-[410px] overflow-x-auto'>
-                {hotels.map((hotel) => {
+            <div className='h-[410px] overflow-x-auto scrollbar-thin scrollbar-thumb-white scrollbar-thumb-rounded pr-3 scrollbar-track-transparent'>
+                {hotels.map((hotel, i) => {
                     const {
                         image,
                         hotelName,
@@ -35,7 +35,7 @@ const Hotels = ({ booking }) => {
                     } = hotel;
 
                     return (
-                        <div className="bg-white grid grid-cols-5 gap-3 px-5 py-4 rounded-lg shadow-lg mb-4">
+                        <div key={i} className="bg-white grid grid-cols-5 gap-3 px-5 py-4 rounded-lg shadow-lg mb-4">
                             <img
                                 className="col-span-2 rounded-md"
                                 src={image}

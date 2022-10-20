@@ -17,14 +17,14 @@ const Home = () => {
     return (
         <div
             style={{ backgroundImage: `url(${img})` }}
-            className={`h-screen relative flex flex-col justify-center w-full transition-all duration-500 bg-cover bg-center`}
+            className={`h-screen relative flex flex-col items-center justify-center w-full transition-all duration-500 bg-cover bg-center`}
         >
             <ProgressBar activeSlider={activeSlider} />
-            <div className="relative bg-slate-900/40 h-screen overflow-hidden">
-                <div className="max-w-6xl mx-auto">
+            <div className="relative bg-slate-900/40 w-full h-screen overflow-hidden">
+                <div className="xl:max-w-6xl lg:max-w-5xl md:max-w-4xl mx-auto px-10">
                     <Header />
 
-                    <div className="grid grid-cols-2 py-14">
+                    <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 py-14">
                         <Details />
                         <Carousel />
                     </div>

@@ -14,3 +14,9 @@ body {
 .leaflet-container {
     height: 500px;
 }
+
+@media (max-width: 767.99px) {
+    .leaflet-container {
+        height: 200px;
+    }
+}

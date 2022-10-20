@@ -15,14 +15,14 @@ const Destination = () => {
             className={`h-screen relative flex flex-col justify-center w-full transition-all duration-500 bg-cover bg-center`}
         >
             <div className="relative bg-slate-900/70 h-screen overflow-hidden">
-                <div className="max-w-6xl mx-auto">
+                <div className="xl:max-w-6xl lg:max-w-5xl md:max-w-4xl sm:max-w-xl max-w-xs mx-auto px-3">
                     <Header />
 
-                    <div className="grid grid-cols-5 gap-8 py-14 items-start">
-                        <div className="col-span-2">
+                    <div className="grid lg:grid-cols-5 md:grid-cols-6 md:gap-8 gap-5 py-14 items-start">
+                        <div className="lg:col-span-2 md:col-span-3 sm:col-span-6 md:order-1 order-2">
                             <Hotels booking={bookingObj} />
                         </div>
-                        <div className="col-span-3">
+                        <div className="lg:col-span-3 md:col-span-3 sm:col-span-6 md:order-1 order-1">
                             <Map />
                         </div>
                     </div>
