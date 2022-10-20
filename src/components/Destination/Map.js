@@ -6,7 +6,7 @@ const Map = () => {
     return (
         <div className="bg-white p-5 rounded-lg shadow-lg">
             <MapContainer
-                center={[51.505, -0.09]}
+                center={[23.777176, 90.399452]}
                 zoom={13}
                 scrollWheelZoom={false}
                 style={{ borderRadius: '8px' }}

@@ -8,9 +8,16 @@ import Signup from './components/Signup/Signup';
 import { Toaster } from 'react-hot-toast';
 import RequiredAuth from './components/RequiredAuth/RequiredAuth';
 import PublicRoute from './components/PublicRoute/PublicRoute';
+import auth from './firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Loader from './components/common/Loader';
 
 function App() {
-    return (
+    const [, loading] = useAuthState(auth);
+
+    return loading ? (
+        <Loader />
+    ) : (
         <>
             <Routes>
                 <Route path="/" element={<Home />} />
