@@ -7,7 +7,6 @@ import {
     useCreateUserWithEmailAndPassword,
     useUpdateProfile,
 } from 'react-firebase-hooks/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 
 const Signup = () => {
@@ -18,8 +17,6 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const navigate = useNavigate();
-
-    // const [user, loading] = useAuthState(auth);
 
     const [createUserWithEmailAndPassword, user, error] =
         useCreateUserWithEmailAndPassword(auth, {
