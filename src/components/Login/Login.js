@@ -1,56 +1,102 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import loginBg from '../../images/login-bg.jpg';
 import Header from '../common/Header';
+import auth from '../../firebase.init';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 
-const Login = () => {
+const Signup = () => {
+    // local states
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    // const [validation, setValidation] = useState(false);
+
+    // navigator form router
+    const navigate = useNavigate();
+
+    // login hook form firebase hook
+    const [signInWithEmailAndPassword, user, error] =
+        useSignInWithEmailAndPassword(auth);
+
+    // handle login
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(email, password);
+    };
+
+    // handle firebase authentication error
+    if (error) {
+        error?.code === 'auth/user-not-found' &&
+            toast.error('Account does not exist');
+
+        error?.code === 'auth/wrong-password' &&
+            toast.error('Password incorrect.');
+    }
+
+    // navigate user
+    useEffect(() => {
+        if (user) {
+            navigate('/');
+            toast.success(`Welcome!`);
+        }
+    }, [user, navigate]);
+
     return (
         <div
             className="h-screen w-full bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${loginBg})` }}
         >
             <div className="h-screen w-full bg-slate-900/60">
-                <div className="max-w-6xl mx-auto">
+                <div className="xl:max-w-6xl lg:max-w-5xl md:max-w-4xl mx-auto md:px-10 px-3">
                     <Header />
 
                     <div className="h-[calc(95vh-80px)] flex justify-center items-center">
-                        <div className="max-w-2xl mx-auto p-10 rounded-lg backdrop-blur-sm bg-slate-900/40">
-                            <h2 className="text-3xl mb-8 font-extrabold text-white">
-                                Login your account!
+                        <div className="md:w-[400px] sm:w-96 w-80 sm:p-10 p-5 py-8 rounded-lg backdrop-blur-sm bg-slate-900/40">
+                            <h2 className="sm:text-2xl text-xl mb-8 text-center font-extrabold text-white">
+                                Login to your account!
                             </h2>
-                            <form>
+                            <form onSubmit={handleOnSubmit}>
                                 <div className="mb-5">
                                     <input
-                                        type="text"
-                                        placeholder="Enter your name"
-                                        className="relative w-full p-1 bg-transparent outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
+                                        type="email"
+                                        placeholder="Enter your email"
+                                        value={email}
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
+                                        className="relative w-full p-1 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
                                     />
                                 </div>
-                                <div className="mb-4">
+                                <div className="mb-3">
                                     <input
                                         type="password"
                                         placeholder="Enter your password"
-                                        className="relative w-full p-1 bg-transparent outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                        className="relative w-full p-1 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
                                     />
                                 </div>
 
-                                <div className="mb-7 text-sm text-right transition-all duration-300 text-white hover:text-blue-300">
+                                <div className="mb-4 text-sm text-right transition-all duration-300 text-white hover:text-blue-400">
                                     <Link to="/">Forget Password?</Link>
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="bg-[#2977c4] text-white py-1 px-7 w-full rounded-md font-medium text-base transition-all duration-300 hover:bg-[#3498db]"
+                                    className="bg-[#2977c4] text-white py-1 px-7 md:text-base text-sm w-full rounded-md font-medium transition-all duration-300 hover:bg-[#3498db]"
                                 >
                                     Login
                                 </button>
                             </form>
 
-                            <div className='text-white mt-5 text-center transition-all duration-300 hover:text-blue-300'>
-                                <Link to="/signup">Don't have an account?</Link>
+                            <div className="text-white mt-5 text-center transition-all md:text-base text-sm duration-300 hover:text-blue-400">
+                                <Link to="/signup">Don't Have an account?</Link>
                             </div>
 
-                            <div className="relative flex py-5 items-center">
+                            <div className="relative md:text-base text-sm flex py-5 items-center">
                                 <div className="flex-grow border-t border-gray-400"></div>
                                 <span className="flex-shrink mx-4 text-gray-400">
                                     OR
@@ -59,10 +105,10 @@ const Login = () => {
                             </div>
 
                             <div className="grid grid-cols-2 gap-3">
-                                <button className="bg-[#2977c4] text-white py-1 px-7 w-full rounded-md font-medium text-base transition-all duration-300 hover:bg-[#3498db]">
+                                <button className="bg-[#2977c4] text-white py-1 md:text-base text-sm w-full rounded-md font-medium transition-all duration-300 hover:bg-[#3498db]">
                                     Facebook
                                 </button>
-                                <button className="bg-[#2977c4] text-white py-1 px-7 w-full rounded-md font-medium text-base transition-all duration-300 hover:bg-[#3498db]">
+                                <button className="bg-[#2977c4] text-white py-1 md:text-base text-sm w-full rounded-md font-medium transition-all duration-300 hover:bg-[#3498db]">
                                     Google
                                 </button>
                             </div>
@@ -74,4 +120,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Signup;

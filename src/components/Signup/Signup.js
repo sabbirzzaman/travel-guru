@@ -10,21 +10,26 @@ import {
 import toast from 'react-hot-toast';
 
 const Signup = () => {
+    // local state
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     // const [validation, setValidation] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    // navigate hook
     const navigate = useNavigate();
 
+    // create user hook
     const [createUserWithEmailAndPassword, user, error] =
         useCreateUserWithEmailAndPassword(auth, {
             sendEmailVerification: true,
         });
 
+    // update profile hook
     const [updateProfile] = useUpdateProfile(auth);
 
+    // handle signup
     const handleOnSubmit = async (e) => {
         e.preventDefault();
 
@@ -42,6 +47,7 @@ const Signup = () => {
         await updateProfile({ displayName: name });
     };
 
+    // handle auth errors
     if (error) {
         error?.code === 'auth/email-already-in-use' &&
             toast.error('User account already exists!');
@@ -123,7 +129,7 @@ const Signup = () => {
                                 </button>
                             </form>
 
-                            <div className="text-white mt-5 text-center transition-all md:text-base text-sm duration-300 hover:text-blue-300">
+                            <div className="text-white mt-5 text-center transition-all md:text-base text-sm duration-300 hover:text-blue-400">
                                 <Link to="/login">
                                     Already have an account?
                                 </Link>

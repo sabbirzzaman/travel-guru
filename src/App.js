@@ -7,6 +7,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import { Toaster } from 'react-hot-toast';
 import RequiredAuth from './components/RequiredAuth/RequiredAuth';
+import PublicRoute from './components/PublicRoute/PublicRoute';
 
 function App() {
     return (
@@ -29,8 +30,22 @@ function App() {
                         </RequiredAuth>
                     }
                 />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
+                <Route
+                    path="/login"
+                    element={
+                        <PublicRoute>
+                            <Login />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path="/signup"
+                    element={
+                        <PublicRoute>
+                            <Signup />
+                        </PublicRoute>
+                    }
+                />
             </Routes>
             <Toaster />
         </>
