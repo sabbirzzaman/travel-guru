@@ -16,6 +16,7 @@ const Carousel = () => {
     // get dispatch
     const dispatch = useDispatch();
 
+    // set active carousel id to state
     useEffect(() => {
         dispatch(setActiveSlider(sliderIndex));
     }, [sliderIndex, dispatch]);

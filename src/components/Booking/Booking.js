@@ -6,8 +6,10 @@ import BookingDetails from './BookingDetails';
 import BookingForm from './BookingForm';
 
 const Booking = () => {
+    // get id from parameter
     const { id } = useParams();
 
+    // get carousel info from state
     const { img, place, details } = useSelector((state) =>
         state.carousel.slider.find((slide) => slide.id === Number(id))
     );

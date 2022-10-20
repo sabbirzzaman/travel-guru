@@ -3,7 +3,10 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Details = () => {
+    // get active carousel id from state
     const { activeSlider } = useSelector((state) => state.carousel);
+
+    // get carousel details form state
     const { place, details } = useSelector((state) =>
         state.carousel.slider.find((slide) => slide.id === activeSlider)
     );

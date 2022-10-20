@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const ProgressBar = ({ activeSlider }) => {
+    // get carousel from state
     const { slider } = useSelector((state) => state.carousel);
 
     return (

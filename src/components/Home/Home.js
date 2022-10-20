@@ -6,7 +6,10 @@ import Details from './Details';
 import ProgressBar from './ProgressBar';
 
 const Home = () => {
+    // get active slider from state
     const { activeSlider } = useSelector((state) => state.carousel);
+
+    // get image form state
     const { img } = useSelector((state) =>
         state.carousel.slider.find((slide) => slide.id === activeSlider)
     );

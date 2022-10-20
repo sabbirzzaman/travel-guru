@@ -4,15 +4,18 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 
 const BookingForm = ({ place }) => {
+    // local state
     const [location, setLocation] = useState('');
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
+    // get navigator form react router
     const navigate = useNavigate();
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
 
+        // booking
         const booking = {
             location,
             destination: place,
@@ -20,8 +23,10 @@ const BookingForm = ({ place }) => {
             endDate,
         };
 
+        // set booking form to local storage
         localStorage.setItem('booking', JSON.stringify(booking));
 
+        // navigate to destination page
         navigate('/destination');
     };
 

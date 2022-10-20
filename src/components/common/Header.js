@@ -17,26 +17,20 @@ const Header = () => {
             <div className="flex items-center gap-10">
                 <nav className="flex gap gap-10">
                     <Link
-                        to="/"
-                        className="text-white cursor-pointer transition-all duration-300 font-medium hover:text-[#3498db]"
-                    >
-                        News
-                    </Link>
-                    <Link
-                        to="/"
-                        className="text-white cursor-pointer transition-all duration-300 font-medium hover:text-[#3498db]"
+                        to="/destination"
+                        className="text-white cursor-pointer transition-all duration-300 font-medium hover:text-blue-400"
                     >
                         Destination
                     </Link>
                     <Link
                         to="/"
-                        className="text-white cursor-pointer transition-all duration-300 font-medium hover:text-[#3498db]"
+                        className="text-white cursor-pointer transition-all duration-300 font-medium hover:text-blue-400"
                     >
                         Blog
                     </Link>
                     <Link
                         to="/"
-                        className="text-white cursor-pointer transition-all duration-300 font-medium hover:text-[#3498db]"
+                        className="text-white cursor-pointer transition-all duration-300 font-medium hover:text-blue-400"
                     >
                         Contact
                     </Link>
