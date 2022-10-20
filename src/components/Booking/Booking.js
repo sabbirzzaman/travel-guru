@@ -20,7 +20,7 @@ const Booking = () => {
             className={`h-screen relative flex flex-col justify-center w-full transition-all duration-500 bg-cover bg-center`}
         >
             <div className="relative bg-slate-900/40 h-screen overflow-hidden">
-                <div className="xl:max-w-6xl lg:max-w-5xl md:max-w-4xl mx-auto px-3">
+                <div className="xl:max-w-6xl lg:max-w-5xl md:max-w-4xl mx-auto md:px-10 px-3">
                     <Header />
 
                     <div className="grid md:grid-cols-2 grid-cols-1 md:py-14 py-1  items-center">

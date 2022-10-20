@@ -63,7 +63,7 @@ const Hotels = ({ booking }) => {
                                 </div>
 
                                 <div className='flex gap-5'>
-                                    <span>{rating}</span>
+                                    <span className='font-bold'>{rating}</span>
                                     <span><span className='font-bold'>{price}/</span>night</span>
                                 </div>
                             </div>

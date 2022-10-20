@@ -21,7 +21,7 @@ const Home = () => {
         >
             <ProgressBar activeSlider={activeSlider} />
             <div className="relative bg-slate-900/40 w-full h-screen overflow-hidden">
-                <div className="xl:max-w-6xl lg:max-w-5xl md:max-w-4xl mx-auto px-10">
+                <div className="xl:max-w-6xl lg:max-w-5xl md:max-w-4xl mx-auto md:px-10 px-3">
                     <Header />
 
                     <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 py-14">
