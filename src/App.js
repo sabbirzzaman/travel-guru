@@ -11,6 +11,7 @@ import PublicRoute from './components/PublicRoute/PublicRoute';
 import auth from './firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loader from './components/common/Loader';
+import ForgetPassword from './components/Login/ForgetPassword';
 
 function App() {
     const [, loading] = useAuthState(auth);
@@ -42,6 +43,14 @@ function App() {
                     element={
                         <PublicRoute>
                             <Login />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path="/forget-password"
+                    element={
+                        <PublicRoute>
+                            <ForgetPassword />
                         </PublicRoute>
                     }
                 />

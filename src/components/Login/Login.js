@@ -6,8 +6,9 @@ import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import validateEmail from '../../utils/validateEmail';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
-const Signup = () => {
+const Login = () => {
     // local states
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -79,7 +80,7 @@ const Signup = () => {
             setButtonDisabled(true);
         }
 
-        if(loading) {
+        if (loading) {
             setButtonDisabled(true);
         } else {
             setButtonDisabled(false);
@@ -164,7 +165,7 @@ const Signup = () => {
                                 </div>
 
                                 <div className="mb-4 text-sm text-right transition-all duration-300 text-white hover:text-blue-400">
-                                    <Link to="/">Forget Password?</Link>
+                                    <Link to="/forget-password">Forget Password?</Link>
                                 </div>
 
                                 <button
@@ -227,26 +228,7 @@ const Signup = () => {
                                 <div className="flex-grow border-t border-gray-400"></div>
                             </div>
 
-                            <div className="flex justify-center gap-5">
-                                <button className="bg-white flex justify-center items-center w-9 hover:ring hover:ring-offset-1 hover:ring-blue-400 h-9 rounded-full font-medium transition-all duration-300">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 320 512"
-                                        width="15"
-                                    >
-                                        <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
-                                    </svg>
-                                </button>
-                                <button className="bg-white flex justify-center items-center w-9 hover:ring hover:ring-offset-1 hover:ring-blue-400 h-9 rounded-full font-medium transition-all duration-300">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 488 512"
-                                        width="25"
-                                    >
-                                        <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
-                                    </svg>
-                                </button>
-                            </div>
+                            <SocialLogin />
                         </div>
                     </div>
                 </div>
@@ -255,4 +237,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default Login;
