@@ -10,6 +10,8 @@ const Signup = () => {
     // local states
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [emailFocused, setEmailFocused] = useState(false)
+    const [passwordFocused, setPasswordFocused] = useState(false)
     // const [validation, setValidation] = useState(false);
 
     // navigator form router
@@ -42,6 +44,8 @@ const Signup = () => {
         }
     }, [user, navigate]);
 
+    console.log(emailFocused);
+
     return (
         <div
             className="h-screen w-full bg-cover bg-center bg-no-repeat"
@@ -57,27 +61,35 @@ const Signup = () => {
                                 Login to your account!
                             </h2>
                             <form onSubmit={handleOnSubmit}>
-                                <div className="mb-5">
-                                    <input
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        value={email}
-                                        onChange={(e) =>
-                                            setEmail(e.target.value)
-                                        }
-                                        className="relative w-full p-1 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
-                                    />
+                                <div className='mb-5 relative overflow-hidden'>
+                                    <div className={`after:transition-all after:duration-500 after:content-[''] after:h-[1px] after:w-full after:absolute after:left-0 after:bottom-0 after:bg-blue-400 after:rounded-md after:-translate-x-full ${emailFocused && 'after:translate-x-0'}`}>
+                                        <input
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            value={email}
+                                            onChange={(e) =>
+                                                setEmail(e.target.value)
+                                            }
+                                            onFocus={() => setEmailFocused(true)}
+                                            onBlur={() => setEmailFocused(false)}
+                                            className="relative w-full p-1 after:w-5 after:h-5 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b"
+                                        />
+                                    </div>
                                 </div>
-                                <div className="mb-3">
-                                    <input
-                                        type="password"
-                                        placeholder="Enter your password"
-                                        value={password}
-                                        onChange={(e) =>
-                                            setPassword(e.target.value)
-                                        }
-                                        className="relative w-full p-1 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
-                                    />
+                                <div className='mb-3 relative overflow-hidden'>
+                                    <div className={`after:transition-all after:duration-500 after:content-[''] after:h-[1.5px] after:w-full after:absolute after:left-0 after:bottom-0 after:bg-blue-400 after:rounded-md after:-translate-x-full ${passwordFocused && 'after:translate-x-0'}`}>
+                                        <input
+                                            type="email"
+                                            placeholder="Enter your password"
+                                            value={password}
+                                            onChange={(e) =>
+                                                setPassword(e.target.value)
+                                            }
+                                            onFocus={() => setPasswordFocused(true)}
+                                            onBlur={() => setPasswordFocused(false)}
+                                            className="relative w-full p-1 after:w-5 after:h-5 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b"
+                                        />
+                                    </div>
                                 </div>
 
                                 <div className="mb-4 text-sm text-right transition-all duration-300 text-white hover:text-blue-400">
