@@ -50,13 +50,7 @@ const ForgetPassword = () => {
         } else {
             setButtonDisabled(true);
         }
-
-        if (sending) {
-            setButtonDisabled(true);
-        } else {
-            setButtonDisabled(false);
-        }
-    }, [email, isEmailInvalid, sending]);
+    }, [email, isEmailInvalid]);
     return (
         <div
             className="h-screen w-full bg-cover bg-center bg-no-repeat"
@@ -106,7 +100,7 @@ const ForgetPassword = () => {
                                             isEmailInvalid &&
                                             'bg-red-400 hover:bg-red-500'
                                         }`}
-                                        disabled={buttonDisabled}
+                                        disabled={buttonDisabled || sending}
                                     >
                                         {sending ? (
                                             <>

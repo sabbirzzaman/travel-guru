@@ -104,14 +104,7 @@ const Signup = () => {
         } else {
             setButtonDisabled(true);
         }
-
-        if (loading) {
-            setButtonDisabled(true);
-        } else {
-            setButtonDisabled(false);
-        }
     }, [
-        loading,
         name,
         email,
         password,
@@ -128,6 +121,8 @@ const Signup = () => {
             toast.success(`Verification email send to your email!`);
         }
     }, [user, navigate]);
+
+    console.log(buttonDisabled)
 
     return (
         <div
@@ -254,7 +249,7 @@ const Signup = () => {
                                             isConfirmPassInvalid) &&
                                         'bg-red-400 hover:bg-red-500'
                                     }`}
-                                    disabled={buttonDisabled}
+                                    disabled={buttonDisabled || loading}
                                 >
                                     {loading ? (
                                         <>

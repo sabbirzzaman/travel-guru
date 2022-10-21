@@ -79,13 +79,7 @@ const Login = () => {
         } else {
             setButtonDisabled(true);
         }
-
-        if (loading) {
-            setButtonDisabled(true);
-        } else {
-            setButtonDisabled(false);
-        }
-    }, [email, password, isEmailInvalid, isPasswordInvalid, loading]);
+    }, [email, password, isEmailInvalid, isPasswordInvalid]);
 
     // navigate user
     useEffect(() => {
@@ -174,7 +168,7 @@ const Login = () => {
                                         (isEmailInvalid || isPasswordInvalid) &&
                                         'bg-red-400 hover:bg-red-500'
                                     }`}
-                                    disabled={buttonDisabled}
+                                    disabled={buttonDisabled || loading}
                                 >
                                     {loading ? (
                                         <>
