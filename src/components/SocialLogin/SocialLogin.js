@@ -34,9 +34,7 @@ const SocialLogin = () => {
         gError?.message === 'Firebase: Error (auth/popup-closed-by-user).' ||
         fError?.message === 'Firebase: Error (auth/popup-closed-by-user).'
     ) {
-        toast.error('Popup closed.', {
-            toastId: 'warning341',
-        });
+        toast.error('Popup closed.');
     }
 
     // handle submit button availability
@@ -61,7 +59,7 @@ const SocialLogin = () => {
                     <AiOutlineGoogle className="text-xl" />
                 ) : (
                     <svg
-                        className="w-5 h-5 mr-3 -ml-1 text-white animate-spin"
+                        className="w-5 h-5 text-white animate-spin"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -85,7 +83,7 @@ const SocialLogin = () => {
             <button
                 onClick={() => signInWithFacebook()}
                 disabled={buttonDisabled}
-                className={`flex justify-center items-center w-9 hover:ring hover:ring-offset-1 hover:ring-white bg-[#2977c4] hover:bg-[#3498db] h-9 rounded-full font-medium text-white transition-all duration-300 ${
+                className={`flex justify-center items-center text-center w-9 h-9 p-2 hover:ring hover:ring-offset-1 hover:ring-white bg-[#2977c4] hover:bg-[#3498db] rounded-full font-medium text-white transition-all duration-300 ${
                     buttonDisabled && 'cursor-not-allowed'
                 }`}
             >
@@ -93,7 +91,7 @@ const SocialLogin = () => {
                     <FaFacebookF className="text-xl" />
                 ) : (
                     <svg
-                        className="w-5 h-5 mr-3 -ml-1 text-white animate-spin"
+                        className="w-5 h-5 text-white animate-spin"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
