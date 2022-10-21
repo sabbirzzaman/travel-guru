@@ -5,14 +5,21 @@ import Header from '../common/Header';
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
+import validateEmail from '../../utils/validateEmail';
 
 const Signup = () => {
     // local states
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    // input focus states
     const [emailFocused, setEmailFocused] = useState(false);
     const [passwordFocused, setPasswordFocused] = useState(false);
-    // const [validation, setValidation] = useState(false);
+
+    // validation states
+    const [buttonDisabled, setButtonDisabled] = useState(true);
+    const [isEmailInvalid, setIsEmailInvalid] = useState(true);
+    const [isPasswordInvalid, setIsPasswordInvalid] = useState(true);
 
     // navigator form router
     const navigate = useNavigate();
@@ -35,6 +42,43 @@ const Signup = () => {
         error?.code === 'auth/wrong-password' &&
             toast.error('Password incorrect.');
     }
+
+    // handle form validation
+    useEffect(() => {
+        if (email.length > 0) {
+            if (!validateEmail(email)) {
+                setIsEmailInvalid(true);
+            } else {
+                setIsEmailInvalid(false);
+            }
+        } else {
+            setIsEmailInvalid(false);
+        }
+
+        if (password.length > 0) {
+            if (password.length < 6) {
+                setIsPasswordInvalid(true);
+            } else {
+                setIsPasswordInvalid(false);
+            }
+        } else {
+            setIsPasswordInvalid(false);
+        }
+    }, [email, password]);
+
+    // handle submit button availability
+    useEffect(() => {
+        if (
+            email.length > 0 &&
+            password.length > 0 &&
+            !isEmailInvalid &&
+            !isPasswordInvalid
+        ) {
+            setButtonDisabled(false);
+        } else {
+            setButtonDisabled(true);
+        }
+    }, [email, password, isEmailInvalid, isPasswordInvalid]);
 
     // navigate user
     useEffect(() => {
@@ -64,6 +108,8 @@ const Signup = () => {
                                         className={`after:transition-all after:duration-500 after:content-[''] after:h-[2px] after:w-full after:absolute after:left-0 after:bottom-0 after:bg-blue-400 after:rounded-md after:-translate-x-full ${
                                             emailFocused &&
                                             'after:translate-x-0'
+                                        } ${
+                                            isEmailInvalid && 'after:bg-red-400'
                                         }`}
                                     >
                                         <input
@@ -88,6 +134,9 @@ const Signup = () => {
                                         className={`after:transition-all after:duration-500 after:content-[''] after:h-[2px] after:w-full after:absolute after:left-0 after:bottom-0 after:bg-blue-400 after:rounded-md after:-translate-x-full ${
                                             passwordFocused &&
                                             'after:translate-x-0'
+                                        } ${
+                                            isPasswordInvalid &&
+                                            'after:bg-red-400'
                                         }`}
                                     >
                                         <input
@@ -114,10 +163,11 @@ const Signup = () => {
 
                                 <button
                                     type="submit"
-                                    className={`bg-[#2977c4] text-white flex justify-center items-center py-2 px-7 md:text-base text-sm w-full rounded-md font-medium transition-all duration-300 hover:bg-[#3498db] ${
-                                        loading && 'cursor-not-allowed'
+                                    className={`bg-[#2977c4] text-white flex justify-center items-center py-2 px-7 md:text-base text-sm w-full rounded-md font-medium transition-all duration-300 hover:bg-[#3498db] disabled:cursor-not-allowed ${
+                                        (isEmailInvalid || isPasswordInvalid) &&
+                                        'bg-red-400 hover:bg-red-500'
                                     }`}
-                                    disabled={loading ? true : false}
+                                    disabled={buttonDisabled}
                                 >
                                     {loading ? (
                                         <>
@@ -142,6 +192,16 @@ const Signup = () => {
                                                 ></path>
                                             </svg>{' '}
                                             Logging in...
+                                        </>
+                                    ) : isEmailInvalid ? (
+                                        'Invalid email'
+                                    ) : isPasswordInvalid ? (
+                                        <>
+                                            {6 - password.length}{' '}
+                                            {password.length === 5
+                                                ? 'Word'
+                                                : 'Words'}{' '}
+                                            left
                                         </>
                                     ) : (
                                         'Login'

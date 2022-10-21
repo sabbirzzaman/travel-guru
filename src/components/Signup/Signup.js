@@ -86,8 +86,9 @@ const Signup = () => {
         } else {
             setIsConfirmPassInvalid(false);
         }
-    }, [name, email, password, confirmPassword]);
+    }, [email, password, confirmPassword]);
 
+    // handle submit button availability
     useEffect(() => {
         if (
             name.length > 0 &&
