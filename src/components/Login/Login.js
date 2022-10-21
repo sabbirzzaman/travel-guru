@@ -78,7 +78,13 @@ const Signup = () => {
         } else {
             setButtonDisabled(true);
         }
-    }, [email, password, isEmailInvalid, isPasswordInvalid]);
+
+        if(loading) {
+            setButtonDisabled(true);
+        } else {
+            setButtonDisabled(false);
+        }
+    }, [email, password, isEmailInvalid, isPasswordInvalid, loading]);
 
     // navigate user
     useEffect(() => {

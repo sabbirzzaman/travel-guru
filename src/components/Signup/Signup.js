@@ -103,7 +103,14 @@ const Signup = () => {
         } else {
             setButtonDisabled(true);
         }
+
+        if (loading) {
+            setButtonDisabled(true);
+        } else {
+            setButtonDisabled(false);
+        }
     }, [
+        loading,
         name,
         email,
         password,
