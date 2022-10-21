@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaFacebookF } from 'react-icons/fa';
 import { AiOutlineGoogle } from 'react-icons/ai';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
     useSignInWithFacebook,
     useSignInWithGoogle,
