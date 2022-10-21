@@ -15,7 +15,7 @@ const Destination = () => {
             className={`h-screen relative flex flex-col justify-center w-full transition-all duration-500 bg-cover bg-center`}
         >
             <div className="relative bg-slate-900/70 h-screen overflow-hidden">
-                <div className="xl:max-w-6xl lg:max-w-5xl md:max-w-4xl sm:max-w-xl max-w-xs mx-auto px-3">
+                <div className="xl:max-w-6xl lg:max-w-5xl md:max-w-4xl sm:max-w-xl max-w-xs mx-auto md:px-10 px-3">
                     <Header />
 
                     <div className="grid lg:grid-cols-5 md:grid-cols-6 md:gap-8 gap-5 py-14 items-start">

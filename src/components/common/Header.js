@@ -31,7 +31,7 @@ const Header = () => {
                             Hi, {user ? displayName : 'Guest'}
                         </span>
                         <div className={`w-8 h-8 flex items-center font-bold justify-center bg-blue-500 text-white rounded-full`}>
-                            {user ? displayName.toUpperCase().substring(0, 1) : 'G'}
+                            {user ? displayName?.toUpperCase()?.substring(0, 1) : 'G'}
                         </div>
                     </button>
                 </span>
