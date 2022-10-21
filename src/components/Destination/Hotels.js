@@ -1,6 +1,7 @@
 import React from 'react';
 import { format } from 'date-fns';
 import { useSelector } from 'react-redux';
+import { AiFillStar } from 'react-icons/ai';
 
 const Hotels = ({ booking }) => {
     const { destination, startDate, endDate } = booking;
@@ -21,7 +22,7 @@ const Hotels = ({ booking }) => {
                 </p>
             </div>
 
-            <div className='h-[410px] overflow-x-auto scrollbar-thin scrollbar-thumb-white scrollbar-thumb-rounded pr-3 scrollbar-track-transparent'>
+            <div className="h-[410px] overflow-x-auto scrollbar-thin scrollbar-thumb-white scrollbar-thumb-rounded pr-3 scrollbar-track-transparent">
                 {hotels.map((hotel, i) => {
                     const {
                         image,
@@ -35,7 +36,10 @@ const Hotels = ({ booking }) => {
                     } = hotel;
 
                     return (
-                        <div key={i} className="bg-white grid grid-cols-5 gap-3 px-5 py-4 rounded-lg shadow-lg mb-4">
+                        <div
+                            key={i}
+                            className="bg-white grid grid-cols-5 gap-3 px-5 py-4 rounded-lg shadow-lg mb-4"
+                        >
                             <img
                                 className="col-span-2 rounded-md"
                                 src={image}
@@ -46,7 +50,7 @@ const Hotels = ({ booking }) => {
                                 <p className="font-bold mb-3">{hotelName}</p>
 
                                 <div className="text-sm flex gap-2 justify-between mb-2">
-                                    <span>{bedrooms} Bedrooms</span>
+                                    <span>{bedrooms} Rooms</span>
                                     <span>{beds} Beds</span>
                                     <span>{baths} Baths</span>
                                 </div>
@@ -57,14 +61,24 @@ const Hotels = ({ booking }) => {
                                             key={i}
                                             className="text-sm flex flex-col gap-1 "
                                         >
-                                            {feature}
+                                            <span className="flex gap-1 items-baseline">
+                                                <span className='font-bold'> - </span> <span>{feature}</span>
+                                            </span>
                                         </p>
                                     ))}
                                 </div>
 
-                                <div className='flex gap-5'>
-                                    <span className='font-bold'>{rating}</span>
-                                    <span><span className='font-bold'>{price}/</span>night</span>
+                                <div className="flex gap-5">
+                                    <span className="font-bold flex items-center gap-2">
+                                        <AiFillStar className="text-orange-400 text-lg" />
+                                        {rating}
+                                    </span>
+                                    <span>
+                                        <span className="font-bold">
+                                            ${price} /{' '}
+                                        </span>
+                                        night
+                                    </span>
                                 </div>
                             </div>
                         </div>

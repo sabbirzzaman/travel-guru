@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const BookingForm = ({ place }) => {
@@ -14,6 +15,11 @@ const BookingForm = ({ place }) => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
+
+        if(location.length <= 0) {
+            toast.error('Location is required')
+            return;
+        }
 
         // booking
         const booking = {
@@ -31,7 +37,7 @@ const BookingForm = ({ place }) => {
     };
 
     return (
-        <div className="md:w-96 w-80 md:ml-auto mx-auto md:mx-0 md:py-10 md:px-8 px-5 py-6 rounded-lg backdrop-blur-sm bg-blue-100/40">
+        <div className="md:w-96 w-80 md:ml-auto mx-auto md:mx-0 md:py-10 md:px-8 px-5 py-6 rounded-lg backdrop-blur-sm bg-slate-900/60">
             <form onSubmit={handleOnSubmit}>
                 <div className="mb-5">
                     <label
