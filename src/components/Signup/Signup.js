@@ -17,6 +17,11 @@ const Signup = () => {
     // const [validation, setValidation] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const [nameFocused, setNameFocused] = useState(false);
+    const [emailFocused, setEmailFocused] = useState(false);
+    const [passwordFocused, setPasswordFocused] = useState(false);
+    const [confirmPasswordFocused, setConfirmPasswordFocused] = useState(false);
+
     // navigate hook
     const navigate = useNavigate();
 
@@ -76,49 +81,65 @@ const Signup = () => {
                                 Create your account!
                             </h2>
                             <form onSubmit={handleOnSubmit}>
-                                <div className="mb-5">
-                                    <input
-                                        type="text"
-                                        placeholder="Enter your name"
-                                        value={name}
-                                        onChange={(e) =>
-                                            setName(e.target.value)
-                                        }
-                                        className="relative w-full p-1 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
-                                    />
+                            <div className='mb-5 relative overflow-hidden'>
+                                    <div className={`after:transition-all after:duration-500 after:content-[''] after:h-[1.5px] after:w-full after:absolute after:left-0 after:bottom-0 after:bg-blue-400 after:rounded-md after:-translate-x-full ${nameFocused && 'after:translate-x-0'}`}>
+                                        <input
+                                            type="text"
+                                            placeholder="Enter your email"
+                                            value={name}
+                                            onChange={(e) =>
+                                                setName(e.target.value)
+                                            }
+                                            onFocus={() => setNameFocused(true)}
+                                            onBlur={() => setNameFocused(false)}
+                                            className="relative w-full p-1 after:w-5 after:h-5 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b"
+                                        />
+                                    </div>
                                 </div>
-                                <div className="mb-5">
-                                    <input
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        value={email}
-                                        onChange={(e) =>
-                                            setEmail(e.target.value)
-                                        }
-                                        className="relative w-full p-1 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
-                                    />
+                                <div className='mb-5 relative overflow-hidden'>
+                                    <div className={`after:transition-all after:duration-500 after:content-[''] after:h-[1.5px] after:w-full after:absolute after:left-0 after:bottom-0 after:bg-blue-400 after:rounded-md after:-translate-x-full ${emailFocused && 'after:translate-x-0'}`}>
+                                        <input
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            value={email}
+                                            onChange={(e) =>
+                                                setEmail(e.target.value)
+                                            }
+                                            onFocus={() => setEmailFocused(true)}
+                                            onBlur={() => setEmailFocused(false)}
+                                            className="relative w-full p-1 after:w-5 after:h-5 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b"
+                                        />
+                                    </div>
                                 </div>
-                                <div className="mb-5">
-                                    <input
-                                        type="password"
-                                        placeholder="Enter your password"
-                                        value={password}
-                                        onChange={(e) =>
-                                            setPassword(e.target.value)
-                                        }
-                                        className="relative w-full p-1 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
-                                    />
+                                <div className='mb-5 relative overflow-hidden'>
+                                    <div className={`after:transition-all after:duration-500 after:content-[''] after:h-[2px] after:w-full after:absolute after:left-0 after:bottom-0 after:bg-blue-400 after:rounded-md after:-translate-x-full ${passwordFocused && 'after:translate-x-0'}`}>
+                                        <input
+                                            type="password"
+                                            placeholder="Enter your password"
+                                            value={password}
+                                            onChange={(e) =>
+                                                setPassword(e.target.value)
+                                            }
+                                            onFocus={() => setPasswordFocused(true)}
+                                            onBlur={() => setPasswordFocused(false)}
+                                            className="relative w-full p-1 after:w-5 after:h-5 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b"
+                                        />
+                                    </div>
                                 </div>
-                                <div className="mb-5">
-                                    <input
-                                        type="password"
-                                        placeholder="Confirm your password"
-                                        value={confirmPassword}
-                                        onChange={(e) =>
-                                            setConfirmPassword(e.target.value)
-                                        }
-                                        className="relative w-full p-1 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b focus:border-b-blue-400 focus:border-b"
-                                    />
+                                <div className='mb-5 relative overflow-hidden'>
+                                    <div className={`after:transition-all after:duration-500 after:content-[''] after:h-[1px] after:w-full after:absolute after:left-0 after:bottom-0 after:bg-blue-400 after:rounded-md after:-translate-x-full ${confirmPasswordFocused && 'after:translate-x-0'}`}>
+                                        <input
+                                            type="password"
+                                            placeholder="Confirm password"
+                                            value={password}
+                                            onChange={(e) =>
+                                                setConfirmPassword(e.target.value)
+                                            }
+                                            onFocus={() => setConfirmPasswordFocused(true)}
+                                            onBlur={() => setConfirmPasswordFocused(false)}
+                                            className="relative w-full p-1 after:w-5 after:h-5 bg-transparent md:text-base text-sm outline-none text-white transition-all duration-500 border-b-gray-400 border-b"
+                                        />
+                                    </div>
                                 </div>
 
                                 <button

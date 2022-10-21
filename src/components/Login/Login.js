@@ -79,7 +79,7 @@ const Signup = () => {
                                 <div className='mb-3 relative overflow-hidden'>
                                     <div className={`after:transition-all after:duration-500 after:content-[''] after:h-[1.5px] after:w-full after:absolute after:left-0 after:bottom-0 after:bg-blue-400 after:rounded-md after:-translate-x-full ${passwordFocused && 'after:translate-x-0'}`}>
                                         <input
-                                            type="email"
+                                            type="password"
                                             placeholder="Enter your password"
                                             value={password}
                                             onChange={(e) =>
