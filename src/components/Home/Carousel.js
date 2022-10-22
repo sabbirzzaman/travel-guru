@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveSlider } from '../../features/carousel/carouselSlice';
 import { Link } from 'react-router-dom';
+import { Autoplay } from 'swiper';
 
 const Carousel = () => {
     // local states
@@ -32,6 +33,10 @@ const Carousel = () => {
             loop={true}
             onSlideChange={(swiper) => setSliderIndex(swiper.realIndex)}
             width={1300}
+            autoplay={{
+                delay: 4000,
+            }}
+            modules={[Autoplay]}
             className="h-[62vh] w-full absolute xl:-right-[50%] lg:-right-[50%] md:-right-[50%] -right-[10%]"
         >
             {slider.map((slide) => {

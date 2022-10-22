@@ -47,6 +47,11 @@ const Header = () => {
                         {user ? (
                             <>
                                 <Link
+                                    to="/"
+                                    className="text-gray-700 flex w-full px-4 py-3 text-sm rounded-md transition-all duration-300 hover:bg-gray-100"
+                                >
+                                    Home
+                                </Link><Link
                                     to="/destination"
                                     className="text-gray-700 flex w-full px-4 py-3 text-sm rounded-md transition-all duration-300 hover:bg-gray-100"
                                 >
@@ -61,6 +66,12 @@ const Header = () => {
                             </>
                         ) : (
                             <>
+                                <Link
+                                    to="/"
+                                    className="text-gray-700 flex w-full px-4 py-3 text-sm rounded-md transition-all duration-300 hover:bg-gray-100"
+                                >
+                                    Home
+                                </Link>
                                 <Link
                                     to="/login"
                                     className="text-gray-700 flex w-full px-4 py-3 text-sm rounded-md transition-all duration-300 hover:bg-gray-100"
