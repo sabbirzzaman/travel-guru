@@ -29,7 +29,7 @@ const Destination = () => {
                             </div>
                         </div>
                     ) : (
-                        <div className="text-white py-14 flex flex-col justify-center items-center h-[calc(90vh-80px)]">
+                        <div className="text-white py-14 flex flex-col justify-center items-center text-center h-[calc(90vh-80px)]">
                             <p className='mb-5 text-xl font-bold'>You don't have any booking destination</p>
                             <Link to={`/`}>
                                 <button className="bg-[#2977c4] text-white py-2 px-7 xl:text-base lg:text-base md:text-sm rounded-md font-medium text-base transition-all duration-300 hover:bg-[#3498db]">
